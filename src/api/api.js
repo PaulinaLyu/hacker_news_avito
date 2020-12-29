@@ -12,11 +12,20 @@ export const newsAPI = {
 		})
 	},
 
-	getNews (id) {
-		return instance.get(`/item/${id}.json`)
+	getNews (newsId) {
+		return instance.get(`/item/${newsId}.json`)
 		.then(response => {
 			return response.data;
 		})
 	},
 
+};
+
+export const commentAPI = {
+	getComment (commentId) {
+		return instance.get(`item/${commentId}.json`)
+		.then(response => {
+			return response.data;
+		})
+	}
 };

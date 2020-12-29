@@ -47,6 +47,7 @@ export const getNews = (newsId) => {
 	return (dispatch) => {
 		newsAPI.getNews(newsId)
 		.then(data => {
+			if (data)
 			dispatch(setNews(data));
 		});
 	}

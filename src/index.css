@@ -1,63 +1,62 @@
 html {
-  box-sizing: border-box;
+  	box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  	box-sizing: inherit;
 }
 
 body {
-margin: 0;
-font-family: 'Lato', sans-serif;
-font-size: 15px;
-font-weight: 400;
-color: black;
-}
-
-img {
-max-width: 100%;
-height: auto;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	color: black;
 }
 
 a {
-text-decoration: none;
-color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 a:hover {
-text-decoration: none;
-color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 h1,h2,h3,h4 {
-padding: 0;
-margin: 0;
-font-family: 'Montserrat', sans-serif;
-font-weight: 500;
+	padding: 0;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
 }
 
 button, input {
-  cursor: pointer;
+  	cursor: pointer;
 }
 
 button, input:focus {
-  outline: none;
+  	outline: none;
 }
 
 button, input {
-  font: inherit;
+  	font: inherit;
 }
 
 ul {
-list-style: none;
-padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 .logo {
-  font-size: 24px;
-font-weight: 700;
-font-family: 'Montserrat', sans-serif;
-color: #ffc107;
+	font-size: 24px;
+	font-weight: 700;
+	font-family: 'Montserrat', sans-serif;
+	color: black;
+}
+
+.btn {
+  	width: 10%;
 }

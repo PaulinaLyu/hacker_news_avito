@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Logo from './Logo';
 
 const Header = () => (
-	<div className="d-flex align-items-center justify-content-between border-bottom border-2 border-warning py-3 mb-5">
+	<div bg='warning' className="d-flex align-items-center justify-content-between py-3 mb-5 bg-warning">
 		<Container>
 			<Row className="d-flex align-items-center justify-content-between px-3">
 				<Logo />

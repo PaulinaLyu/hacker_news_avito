@@ -24,7 +24,7 @@ const MainItem = ({ news }) => {
 								<div className="ml-3"><i className="fas fa-star"></i><span className="ml-2">{news.score}</span></div>
 							</div>
 							<div className="d-flex fs-6 date-time">
-								<div><i className="fa fa-calendar-o"></i><span className="ml-2">{moment.unix(news.time).format('LTS')}</span></div>
+								<div><i className="fa fa-calendar-o"></i><span className="ml-2">{date.format('LTS')}</span></div>
 								<div className="ml-3"><i className="fa fa-clock-o"></i><span className="ml-2">{date.format('LL')}</span></div>
 							</div>
 						</div>

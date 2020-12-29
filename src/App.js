@@ -15,7 +15,7 @@ function App() {
   					<Route exact path='/' 
     					render={ () => <MainContainer /> } />
 
-					<Route path='/news:newsId?' 
+					<Route path='/news/:newsId?' 
     					render={ () => <NewsContainer /> } />
 				</Row>
 			</Container>
