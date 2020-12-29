@@ -1,10 +1,9 @@
 import React from 'react';
 import NewsItem from './NewsItem';
 
-const News = () => (
+const News = (props) => (
 	<>
-		<div>News</div>
-		<NewsItem />
+		<NewsItem newsProfile={props.newsProfile}/>
 	</>
 )
 

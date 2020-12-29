@@ -4,7 +4,7 @@ import { CommonButton } from '../common/CommonButton'
 
 const Main = (props) => (
 	<div className='d-flex flex-column w-100'>
-		<CommonButton icon={'fa-sync-alt'}/>
+		<CommonButton icon={'fa-sync-alt'} updateNews={props.updateNews}/>
 		{props.news.map(item => <MainItem news={item} key={item.id} />)}
 	</div>
 )

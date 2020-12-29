@@ -15,9 +15,8 @@ function App() {
   					<Route exact path='/' 
     					render={ () => <MainContainer /> } />
 
-					{/* <Route path='/:newsId?' 
-    					render={ () => <NewsContainer /> } /> */}
-
+					<Route path='/news:newsId?' 
+    					render={ () => <NewsContainer /> } />
 				</Row>
 			</Container>
 			

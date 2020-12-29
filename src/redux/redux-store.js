@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from "redux-thunk";
 import mainReducer from './mainReducer';
 import newsReducer from './newsReducer';
@@ -8,6 +9,6 @@ let rootReducer = combineReducers ({
 	newsPage: newsReducer
 });
 
-let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 window.store = store;
 export default store;

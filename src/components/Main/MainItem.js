@@ -1,5 +1,5 @@
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { mapTime } from '../../mappers/mapTime';
 import moment from 'moment'
@@ -7,7 +7,7 @@ import moment from 'moment'
 const MainItem = ({ news }) => {
 	const date = moment.unix(news.time);
 	return (
-		// <NavLink to="/newspage">
+		<NavLink to={`/news/${news.id}`}>
 			<Card className="mb-3 w-100">
 				<Card.Body>
 					<div className="d-flex align-items-center justify-content-start">
@@ -32,7 +32,7 @@ const MainItem = ({ news }) => {
 					</div>
 				</Card.Body>
 			</Card>
-		// </NavLink>
+		</NavLink>
 	)
 };
 
