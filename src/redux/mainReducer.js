@@ -1,12 +1,11 @@
 import { newsAPI } from '../api/api'
 
 const SET_NEWS = 'SET_NEWS';
+const RESET_NEWS = 'RESET_NEWS';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
-// const UPDATE_NEWS = 'UPDATE_NEWS';
 
 let initialState = {
 	news: [],
-	isLoading: false
 }
 
 const mainReducer = (state = initialState, action) => {
@@ -14,7 +13,15 @@ const mainReducer = (state = initialState, action) => {
 		case SET_NEWS:
 			return {
 				...state,
-				news: state.news.concat([action.news])
+				// news: state.news.some(element => element.id === action.news.id)
+				// ? state.news
+				// : [action.news, ...state.news]
+				news: [action.news, ...state.news]
+			}
+		case RESET_NEWS:
+			return {
+				...state,
+				news: []
 			}
 		case TOGGLE_IS_LOADING:
 			return {
@@ -27,19 +34,17 @@ const mainReducer = (state = initialState, action) => {
 }
 
 export const setNews = (news) => ({type: SET_NEWS, news});
-export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
+export const resetNews = () => ({type: RESET_NEWS});
 
 export const getNewsIds = () => {
 	return (dispatch) => {
-		// dispatch(toggleIsLoading(true));
+		dispatch(resetNews());
 		newsAPI.getNewsIds()
 		.then(data => {
-			for (let i = 0; i < 10; i++) {
+			for (let i = 50; i > 0; i--) {
 				dispatch(getNews(data[i]));
 			}
 		})
-		// dispatch(toggleIsLoading(false));
-
 	}
 };
 
@@ -47,8 +52,7 @@ export const getNews = (newsId) => {
 	return (dispatch) => {
 		newsAPI.getNews(newsId)
 		.then(data => {
-			if (data)
-			dispatch(setNews(data));
+			if (data) dispatch(setNews(data));
 		});
 	}
 };

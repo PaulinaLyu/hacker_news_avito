@@ -11,10 +11,10 @@ class MainContainer extends React.Component {
 
 	render() {
 		return (
-			this.props.isLoading
+			this.props.news.length !== 50
 				? <Preloader /> 
 				: <Main news={this.props.news}
-				updateNews={this.props.getNewsIds} /> 
+						getNewsIds={this.props.getNewsIds} /> 
 		)
 	}
 }
@@ -22,9 +22,7 @@ class MainContainer extends React.Component {
 let mapStateToProps = (state) => {
 	return {
 		news: state.mainPage.news,
-		isLoading: state.mainPage.isLoading
 	}
 }
-
 
 export default connect(mapStateToProps, { getNewsIds }) (MainContainer);

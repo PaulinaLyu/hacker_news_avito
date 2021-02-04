@@ -1,11 +1,13 @@
 import { newsAPI, commentAPI } from '../api/api'
 
 const SET_NEWS_PROFILE = 'SET_NEWS_PROFILE';
+const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const SET_COMMENTS = 'SET_COMMENTS';
 
 let initialState = {
 	newsProfile: {},
-	comments: []
+	comments: [],
+	isLoading: false
 }
 
 const newsReducer = (state = initialState, action) => {
@@ -18,7 +20,12 @@ const newsReducer = (state = initialState, action) => {
 		case SET_COMMENTS:
 			return {
 				...state,
-				comments: state.comments.concat([action.comment])
+				comments: [action.comments]
+			}
+		case TOGGLE_IS_LOADING:
+			return {
+				...state,
+				isLoading: action.isLoading
 			}
 		default:
 			return state;
@@ -26,10 +33,12 @@ const newsReducer = (state = initialState, action) => {
 }
 
 export const setNewsProfile = (newsProfile) => ({type: SET_NEWS_PROFILE, newsProfile});
-export const setComments = (comment) => ({type: SET_COMMENTS, comment});
+export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
+export const setComments = (comments) => ({type: SET_COMMENTS, comments});
 
 export const getNewsProfile = (newsId) => {
 	return (dispatch) => {
+		dispatch(toggleIsLoading(true));
 		newsAPI.getNews(newsId)
 		.then(data => {
 			dispatch(setNewsProfile(data));
@@ -38,16 +47,20 @@ export const getNewsProfile = (newsId) => {
 					dispatch(getComment(item));
 				})
 			}
+			dispatch(toggleIsLoading(false));
 		});
 	}
 };
 
 export const getComment = (commentId) => {
 	return (dispatch) => {
+		dispatch(toggleIsLoading(true));
 		commentAPI.getComment(commentId)
 		.then(data => {
 			dispatch(setComments(data));
+			dispatch(toggleIsLoading(false));
 		});
+
 	}
 };
 

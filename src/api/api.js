@@ -25,6 +25,7 @@ export const commentAPI = {
 	getComment (commentId) {
 		return instance.get(`item/${commentId}.json`)
 		.then(response => {
+			console.log(response.data);
 			return response.data;
 		})
 	}

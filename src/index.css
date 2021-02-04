@@ -60,3 +60,16 @@ ul {
 .btn {
   	width: 10%;
 }
+
+.preloader {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+}
+
+.preloader__inner {
+	margin: 0;
+	position: absolute;
+    top: 40%;
+    left: 45%;
+}
