@@ -3,6 +3,7 @@ import { newsAPI, commentAPI } from '../api/api'
 const SET_NEWS_PROFILE = 'SET_NEWS_PROFILE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const SET_COMMENTS = 'SET_COMMENTS';
+const RESET_COMMENTS = 'RESET_COMMENTS';
 
 let initialState = {
 	newsProfile: {},
@@ -20,7 +21,12 @@ const newsReducer = (state = initialState, action) => {
 		case SET_COMMENTS:
 			return {
 				...state,
-				comments: [action.comments]
+				comments: [action.comments, ...state.comments]
+			}
+		case RESET_COMMENTS:
+			return {
+				...state,
+				comments: []
 			}
 		case TOGGLE_IS_LOADING:
 			return {
@@ -35,6 +41,7 @@ const newsReducer = (state = initialState, action) => {
 export const setNewsProfile = (newsProfile) => ({type: SET_NEWS_PROFILE, newsProfile});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
 export const setComments = (comments) => ({type: SET_COMMENTS, comments});
+export const resetComments = () => ({type: RESET_COMMENTS});
 
 export const getNewsProfile = (newsId) => {
 	return (dispatch) => {
@@ -54,13 +61,20 @@ export const getNewsProfile = (newsId) => {
 
 export const getComment = (commentId) => {
 	return (dispatch) => {
-		dispatch(toggleIsLoading(true));
 		commentAPI.getComment(commentId)
 		.then(data => {
 			dispatch(setComments(data));
-			dispatch(toggleIsLoading(false));
 		});
 
+	}
+};
+
+export const updateComments = (commentsIds) => {
+	return (dispatch) => {
+		dispatch(resetComments());
+		commentsIds
+			? commentsIds.forEach((item) => {dispatch(getComment(item))})
+			: dispatch(resetComments());
 	}
 };
 

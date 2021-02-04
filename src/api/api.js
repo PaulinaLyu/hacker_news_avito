@@ -18,7 +18,6 @@ export const newsAPI = {
 			return response.data;
 		})
 	},
-
 };
 
 export const commentAPI = {

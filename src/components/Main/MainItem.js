@@ -27,14 +27,14 @@ const MainItem = ({ news }) => {
 								<IconItem 
 									icon={'fas fa-star'}
 									text={news.score}
-									style={'ml-3'}/>
+									style={'ml-3'} />
 								<IconItem 
 									icon={'fas fa-comments'}
 									text={news.kids
 										? news.kids.length
 										: 0
 									}
-									style={'ml-3'}/>
+									style={'ml-3'} />
 							</div>
 							<div className="d-flex fs-6 date-time">
 								<IconItem 

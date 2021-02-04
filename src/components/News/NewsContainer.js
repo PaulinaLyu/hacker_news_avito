@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { getNewsProfile, getComment } from '../../redux/newsReducer';
+import { getNewsProfile, updateComments } from '../../redux/newsReducer';
 import News from './News';
 import { Preloader } from '../common/Preloader';
 
@@ -30,6 +30,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose (
-	connect(mapStateToProps, { getNewsProfile, getComment }),
+	connect(mapStateToProps, { getNewsProfile, updateComments }),
 	withRouter
 )(NewsContainer);
