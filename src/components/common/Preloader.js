@@ -10,11 +10,3 @@ export const Preloader = () => (
 		</div>
 	</div>
 );
-
-export const CommentsPreloader = () => (
-	<>
-		<Spinner animation="border" variant="warning" />
-		<Spinner animation="border" variant="warning" />
-		<Spinner animation="border" variant="warning" />
-	</>
-);

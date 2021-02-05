@@ -11,7 +11,7 @@ function App() {
     	<>
   			<Header />
 			<Container>
-				<Row>
+				<Row className='d-flex flex-column'>
   					<Route exact path='/' 
     					render={ () => <MainContainer /> } />
 

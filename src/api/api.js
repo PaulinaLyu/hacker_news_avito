@@ -30,7 +30,6 @@ export const commentAPI = {
 	getKidsComment (kidId) {
 		return instance.get(`item/${kidId}.json`)
 		.then(response => {
-			console.log(response.data)
 			return response.data;
 		})
 	}

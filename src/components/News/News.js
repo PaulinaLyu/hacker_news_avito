@@ -4,7 +4,9 @@ import Comments from './Comments/Comments';
 import { CommonButton } from '../common/CommonButton'
 import { LinkItem } from '../common/Link';
 
-const News = ({ newsProfile, comments, kids, commentsCount, updateComments, getKidsComments }) =>(
+const News = ({ newsProfile, comments, kids, 
+	commentsCount, updateComments, getKidsComments, 
+	deleteCommentsCount }) => (
 	<>
 		<LinkItem url={'/'} text={'Back'} icon={'fas fa-arrow-left'} />
 		<NewsItem newsProfile={newsProfile} 
@@ -18,6 +20,8 @@ const News = ({ newsProfile, comments, kids, commentsCount, updateComments, getK
 				? <Comments comments={comments} 
 							getKidsComments={getKidsComments} 
 							kids={kids}
+							commentsLength={newsProfile.kids.length}
+							deleteCommentsCount={deleteCommentsCount}
 							/>
 				: <h5>No comments</h5>
 			}

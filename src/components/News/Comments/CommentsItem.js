@@ -5,8 +5,9 @@ import { IconItem } from '../../common/IconItem';
 import { CommentText } from '../../common/CommentText';
 import KidsItem from './KidsItem';
 
-const CommentsItem = ({ comment, kids, getKidsComments }) => {
+const CommentsItem = ({ comment, kids, getKidsComments}) => {
 	const date = moment.unix(comment.time);
+
 	return (
 		<Media className="mb-5 mt-3">
 			<Media.Body className="fs-5">
@@ -34,10 +35,10 @@ const CommentsItem = ({ comment, kids, getKidsComments }) => {
 						: <div></div>
 					}
 				</div>
-					{kids.length && kids[0].parent === comment.id
-						? kids.map(item => <KidsItem kid={item} key={item.id} />)
-						: <div></div>
-					}
+				{kids.length && kids[0].parent === comment.id
+					? kids.map(item => <KidsItem kid={item} key={item.id} />)
+					: <div></div>
+				}
 			</Media.Body>
 		</Media>
 	)

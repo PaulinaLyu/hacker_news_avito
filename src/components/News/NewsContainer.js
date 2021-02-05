@@ -23,10 +23,11 @@ class NewsContainer extends React.Component {
 let mapStateToProps = (state) => {
 	return {
 		newsProfile: state.newsPage.newsProfile,
-		isLoading: state.mainPage.isLoading,
+		isLoading: state.newsPage.isLoading,
 		comments: state.newsPage.comments,
 		kids: state.newsPage.kids,
 		commentsCount: state.newsPage.commentsCount,
+		deleteCommentsCount: state.newsPage.deleteCommentsCount,
 	}
 }
 

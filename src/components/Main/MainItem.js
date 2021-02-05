@@ -15,8 +15,6 @@ const MainItem = ({ news }) => {
 					<div className="mr-4">
 						<div className="text-warning">
 							<h5>{mapTime(news.time)}</h5>
-							{/* <h5>{date.startOf('hour').fromNow()}</h5> */}
-
 						</div>
 					</div>
 					<div className="ml-2  w-100">
