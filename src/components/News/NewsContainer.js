@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { getNewsProfile, updateComments } from '../../redux/newsReducer';
+import { getNewsProfile, updateComments, getKidsComments } from '../../redux/newsReducer';
 import News from './News';
 import { Preloader } from '../common/Preloader';
 
@@ -16,7 +16,7 @@ class NewsContainer extends React.Component {
 		return (
 			this.props.isLoading
 				? <Preloader /> 
-				: <News {...this.props}/>)
+				: <News {...this.props} />)
 	}
 }
 
@@ -24,12 +24,13 @@ let mapStateToProps = (state) => {
 	return {
 		newsProfile: state.newsPage.newsProfile,
 		isLoading: state.mainPage.isLoading,
-		comments: state.newsPage.comments
-
+		comments: state.newsPage.comments,
+		kids: state.newsPage.kids,
+		commentsCount: state.newsPage.commentsCount,
 	}
 }
 
 export default compose (
-	connect(mapStateToProps, { getNewsProfile, updateComments }),
+	connect(mapStateToProps, { getNewsProfile, updateComments, getKidsComments }),
 	withRouter
 )(NewsContainer);

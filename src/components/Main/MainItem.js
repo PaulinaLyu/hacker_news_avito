@@ -15,6 +15,8 @@ const MainItem = ({ news }) => {
 					<div className="mr-4">
 						<div className="text-warning">
 							<h5>{mapTime(news.time)}</h5>
+							{/* <h5>{date.startOf('hour').fromNow()}</h5> */}
+
 						</div>
 					</div>
 					<div className="ml-2  w-100">
@@ -27,22 +29,21 @@ const MainItem = ({ news }) => {
 								<IconItem 
 									icon={'fas fa-star'}
 									text={news.score}
-									style={'ml-3'} />
+									classValue={'ml-3'} />
 								<IconItem 
 									icon={'fas fa-comments'}
 									text={news.kids
 										? news.kids.length
 										: 0
 									}
-									style={'ml-3'} />
+									classValue={'ml-3'} />
 							</div>
 							<div className="d-flex fs-6 date-time">
 								<IconItem 
 									icon={'fa fa-calendar-o'}
-									text={date.format('LTS')}
-									style='' />
+									text={date.format('LTS')} />
 								<IconItem
-									style={'ml-3'}
+									classValue={'ml-3'}
 									icon={'fa fa-clock-o'}
 									text={date.format('LL')} />
 							</div>

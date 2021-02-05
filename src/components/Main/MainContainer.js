@@ -13,8 +13,7 @@ class MainContainer extends React.Component {
 		return (
 			this.props.news.length !== 50
 				? <Preloader /> 
-				: <Main news={this.props.news}
-						getNewsIds={this.props.getNewsIds} /> 
+				: <Main {...this.props} /> 
 		)
 	}
 }

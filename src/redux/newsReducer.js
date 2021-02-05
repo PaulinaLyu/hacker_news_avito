@@ -2,12 +2,18 @@ import { newsAPI, commentAPI } from '../api/api'
 
 const SET_NEWS_PROFILE = 'SET_NEWS_PROFILE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
-const SET_COMMENTS = 'SET_COMMENTS';
+const SET_COMMENT = 'SET_COMMENT';
 const RESET_COMMENTS = 'RESET_COMMENTS';
+const RESET_KIDS = 'RESET_KIDS';
+const SET_KIDS_COMMENT = 'SET_KIDS_COMMENT';
+const INCREMENT_COMMENTS_COUNT = 'INCREMENT_COMMENTS_COUNT';
+const RESET_COMMENTS_COUNT = 'RESET_COMMENTS_COUNT';
 
 let initialState = {
 	newsProfile: {},
 	comments: [],
+	kids: [],
+	commentsCount: 0,
 	isLoading: false
 }
 
@@ -18,15 +24,38 @@ const newsReducer = (state = initialState, action) => {
 				...state,
 				newsProfile: action.newsProfile
 			}
-		case SET_COMMENTS:
+		case SET_COMMENT:
 			return {
 				...state,
-				comments: [action.comments, ...state.comments]
+				// comments: state.comments.length && state.comments[0].time < action.comment.time
+				// ? [action.comment, ...state.comments]
+				// : [...state.comments, action.comment]
+				comments: [action.comment, ...state.comments]
+			}
+		case SET_KIDS_COMMENT:
+			return {
+				...state,
+				kids: [action.kid, ...state.kids]
 			}
 		case RESET_COMMENTS:
 			return {
 				...state,
 				comments: []
+			}
+		case RESET_KIDS:
+			return {
+				...state,
+				kids: []
+			}
+		case INCREMENT_COMMENTS_COUNT:
+			return {
+				...state,
+				commentsCount: ++state.commentsCount
+			}
+		case RESET_COMMENTS_COUNT:
+			return {
+				...state,
+				commentsCount: 0
 			}
 		case TOGGLE_IS_LOADING:
 			return {
@@ -40,12 +69,18 @@ const newsReducer = (state = initialState, action) => {
 
 export const setNewsProfile = (newsProfile) => ({type: SET_NEWS_PROFILE, newsProfile});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
-export const setComments = (comments) => ({type: SET_COMMENTS, comments});
+export const setComment = (comment) => ({type: SET_COMMENT, comment});
+export const setKidsComment = (kid) => ({type: SET_KIDS_COMMENT, kid});
 export const resetComments = () => ({type: RESET_COMMENTS});
+export const resetKids = () => ({type: RESET_KIDS});
+export const incrementCommentsCount = () => ({type: INCREMENT_COMMENTS_COUNT});
+export const resetCommentsCount = () => ({type: RESET_COMMENTS_COUNT});
 
 export const getNewsProfile = (newsId) => {
 	return (dispatch) => {
 		dispatch(toggleIsLoading(true));
+		dispatch(resetCommentsCount());
+		dispatch(resetComments());
 		newsAPI.getNews(newsId)
 		.then(data => {
 			dispatch(setNewsProfile(data));
@@ -63,20 +98,42 @@ export const getComment = (commentId) => {
 	return (dispatch) => {
 		commentAPI.getComment(commentId)
 		.then(data => {
-			dispatch(setComments(data));
+			if (!data.deleted) {
+				dispatch(setComment(data));
+				dispatch(incrementCommentsCount());
+			}
 		});
-
 	}
 };
 
 export const updateComments = (commentsIds) => {
 	return (dispatch) => {
+		dispatch(resetCommentsCount());
 		dispatch(resetComments());
 		commentsIds
 			? commentsIds.forEach((item) => {dispatch(getComment(item))})
 			: dispatch(resetComments());
 	}
 };
+
+export const getKidsComments = (kidsIds) => {
+	return (dispatch) => {
+		kidsIds.forEach((item) => dispatch(getKidsComment(item)));
+	}
+};
+
+export const getKidsComment = (kidId) => {
+	return (dispatch) => {
+		dispatch(resetKids());
+		commentAPI.getKidsComment(kidId)
+		.then(data => {
+			if (!data.deleted) {
+				dispatch(setKidsComment(data));
+			}
+		});
+	}
+};
+
 
 
 export default newsReducer;

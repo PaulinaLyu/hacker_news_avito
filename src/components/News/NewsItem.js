@@ -2,12 +2,13 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import moment from 'moment';
 import { IconItem } from '../common/IconItem';
+import { LinkItem } from '../common/Link';
 
-const NewsItem = ({ newsProfile }) => {
+const NewsItem = ({ newsProfile, commentsCount }) => {
 	const date = moment.unix(newsProfile.time);
 	return (
-		<div className="d-flex">
-			<Col sm={2}>
+		<div className="d-flex mt-3">
+			<Col sm={2} className='pl-0'>
 				<div className="d-flex flex-column align-items-start">
 					<div><span>{date.format('MMMM, YYYY')}</span></div>
 					<div style={{fontSize: "30px", fontWeight:"700"}}>{date.format('DD')}</div>
@@ -20,15 +21,17 @@ const NewsItem = ({ newsProfile }) => {
 						<IconItem 
 							icon={'fas fa-user-alt'}
 							text={newsProfile.by}
-							style={'mt-2 mb-2 text-black-50'}/>
+							classValue={'mt-2 mb-2 text-black-50'} />
 						<IconItem 
 							icon='fas fa-comments'
 							text={newsProfile.kids
-									? newsProfile.kids.length
+									? commentsCount
 									: 0
 								}
-							style={'mt-2 mb-2 text-black-50'}/>
-						<a href={`${newsProfile.url}`}><h5><i className="fas fa-arrow-right"></i><span className="ml-2">News link</span></h5></a>
+							classValue={'mt-2 mb-2 text-black-50'} />
+						<LinkItem url={newsProfile.url} 
+							icon={'fas fa-arrow-right'} 
+							text={'News link'} />
 				</div>
 			</Col>
 		</div>

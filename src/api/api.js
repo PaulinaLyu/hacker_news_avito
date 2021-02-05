@@ -24,7 +24,13 @@ export const commentAPI = {
 	getComment (commentId) {
 		return instance.get(`item/${commentId}.json`)
 		.then(response => {
-			console.log(response.data);
+			return response.data;
+		})
+	},
+	getKidsComment (kidId) {
+		return instance.get(`item/${kidId}.json`)
+		.then(response => {
+			console.log(response.data)
 			return response.data;
 		})
 	}

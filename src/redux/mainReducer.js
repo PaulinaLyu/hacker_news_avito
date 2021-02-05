@@ -2,7 +2,6 @@ import { newsAPI } from '../api/api'
 
 const SET_NEWS = 'SET_NEWS';
 const RESET_NEWS = 'RESET_NEWS';
-const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 
 let initialState = {
 	news: [],
@@ -13,20 +12,14 @@ const mainReducer = (state = initialState, action) => {
 		case SET_NEWS:
 			return {
 				...state,
-				// news: state.news.some(element => element.id === action.news.id)
-				// ? state.news
-				// : [action.news, ...state.news]
-				news: [action.news, ...state.news]
+				news: state.news.length && state.news[0].time < action.news.time
+					? [action.news, ...state.news]
+					: [...state.news, action.news]
 			}
 		case RESET_NEWS:
 			return {
 				...state,
 				news: []
-			}
-		case TOGGLE_IS_LOADING:
-			return {
-				...state,
-				isLoading: action.isLoading
 			}
 		default:
 			return state;
