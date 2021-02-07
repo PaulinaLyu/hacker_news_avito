@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/hacker_news_react_redux/static/css/main.7ebabc8f.chunk.css",
+    "main.js": "/hacker_news_react_redux/static/js/main.f391ae79.chunk.js",
+    "main.js.map": "/hacker_news_react_redux/static/js/main.f391ae79.chunk.js.map",
+    "runtime-main.js": "/hacker_news_react_redux/static/js/runtime-main.0d629e60.js",
+    "runtime-main.js.map": "/hacker_news_react_redux/static/js/runtime-main.0d629e60.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/hacker_news_react_redux/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.8b8a112c.chunk.js": "/hacker_news_react_redux/static/js/2.8b8a112c.chunk.js",
+    "static/js/2.8b8a112c.chunk.js.map": "/hacker_news_react_redux/static/js/2.8b8a112c.chunk.js.map",
+    "index.html": "/hacker_news_react_redux/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/hacker_news_react_redux/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.7ebabc8f.chunk.css.map": "/hacker_news_react_redux/static/css/main.7ebabc8f.chunk.css.map",
+    "static/js/2.8b8a112c.chunk.js.LICENSE.txt": "/hacker_news_react_redux/static/js/2.8b8a112c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0d629e60.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.8b8a112c.chunk.js",
+    "static/css/main.7ebabc8f.chunk.css",
+    "static/js/main.f391ae79.chunk.js"
+  ]
+}
