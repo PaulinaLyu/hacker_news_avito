@@ -6,11 +6,12 @@ import { CommentText } from '../../common/CommentText';
 
 const KidsItem = ({ kid }) => {
 	const date = moment.unix(kid.time);
+
 	return (
 		<Media className="mb-4 mt-4 ml-5">
 			<Media.Body className="kid">
 				<h6 style={{fontWeight:"700"}} className="text-success mb-3">{kid.by}</h6>
-				<div className="pl-5">
+				<div className="pl-5" id={`parentKid${kid.id}`}>
 					<CommentText text={kid.text}/>
 				</div>
 				<div className="d-flex date-time pl-5 mt-3 text-black-50">

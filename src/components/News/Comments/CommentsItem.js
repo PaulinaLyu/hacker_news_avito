@@ -2,8 +2,8 @@ import React from 'react';
 import Media from 'react-bootstrap/Media';
 import moment from 'moment';
 import { IconItem } from '../../common/IconItem';
-import { CommentText } from '../../common/CommentText';
 import KidsItem from './KidsItem';
+import { CommentText } from '../../common/CommentText';
 
 const CommentsItem = ({ comment, kids, getKidsComments}) => {
 	const date = moment.unix(comment.time);
